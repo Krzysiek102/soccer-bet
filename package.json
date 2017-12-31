@@ -1,0 +1,19 @@
+{
+  "name": "soccer-bet",
+  "version": "1.0.0",
+  "description": "App for predicting footbal results",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Krzysiek102/soccer-bet.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Krzysiek102/soccer-bet/issues"
+  },
+  "homepage": "https://github.com/Krzysiek102/soccer-bet#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
