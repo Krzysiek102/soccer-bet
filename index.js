@@ -1,6 +1,6 @@
-const express = require('express')
-const app = express()
-const PORT = process.env.PORT || 5000
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 5000;
 
-app.get('/', (req, res) => res.send('Hello World2!'))
-app.listen(PORT, () => console.log(`listen on ${ PORT }`))
+app.get('/', (req, res) => res.sendFile(__dirname + '/index.html'));
+app.listen(PORT, () => console.log(`listen on ${PORT}`));
