@@ -13,7 +13,7 @@
   "homepage": "https://soccer-bet.herokuapp.com/",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
