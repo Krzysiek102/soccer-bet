@@ -14,11 +14,12 @@
   },
   "homepage": "https://github.com/Krzysiek102/soccer-bet#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongodb": "^3.0.1",
+    "nodemon": "^1.14.8"
   },
-  "devDependencies": {
-    "nodemon": "^1.14.7"
-  },
+  "devDependencies": {},
   "scripts": {
     "dev": "./node_modules/.bin/nodemon server.js"
   }
