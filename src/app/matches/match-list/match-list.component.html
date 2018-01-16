@@ -1,3 +1,12 @@
 <div class="row">
-  
+    <div class="col-md-5">
+        <h2>Matches</h2>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let match of matches">
+                {{match.host}} - {{match.guest}}
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-5 col-md-offset-2">
+    </div>
 </div>

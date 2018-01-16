@@ -23,7 +23,7 @@ function handleError(res, reason, message, code) {
     res.status(code || 500).json({ "error": message });
 }
 
-app.get(`/api/${MATCHES_COLLECTION}`, function (req, res) {
+app.get(`/api/${MATCHES_COLLECTION}`, (req, res) => {
     db.collection(MATCHES_COLLECTION).find({}).toArray((err, docs) => {
         if (err) {
             handleError(res, err.message, "Failed to get matches.");
@@ -33,7 +33,7 @@ app.get(`/api/${MATCHES_COLLECTION}`, function (req, res) {
     });
 });
 
-app.post(`/api/${MATCHES_COLLECTION}`, function (req, res) {
+app.post(`/api/${MATCHES_COLLECTION}`, (req, res) => {
     var newMatch = req.body;
     newMatch.createDate = new Date();
     if (!req.body.name) {
@@ -48,7 +48,7 @@ app.post(`/api/${MATCHES_COLLECTION}`, function (req, res) {
     });
 });
 
-app.get(`/api/${MATCHES_COLLECTION}/:id`, function (req, res) {
+app.get(`/api/${MATCHES_COLLECTION}/:id`, (req, res) => {
     db.collection(MATCHES_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, (err, doc) => {
         if (err) {
             handleError(res, err.message, "Failed to get match");
@@ -58,7 +58,7 @@ app.get(`/api/${MATCHES_COLLECTION}/:id`, function (req, res) {
     });
 });
 
-app.put(`/api/${MATCHES_COLLECTION}/:id`, function (req, res) {
+app.put(`/api/${MATCHES_COLLECTION}/:id`, (req, res) => {
     var updateDoc = req.body;
     delete updateDoc._id;
     db.collection(MATCHES_COLLECTION).updateOne({ _id: new ObjectID(req.params.id) }, updateDoc, (err, doc) => {
@@ -71,7 +71,7 @@ app.put(`/api/${MATCHES_COLLECTION}/:id`, function (req, res) {
     });
 });
 
-app.delete(`/api/${MATCHES_COLLECTION}/:id`, function (req, res) {
+app.delete(`/api/${MATCHES_COLLECTION}/:id`, (req, res) => {
     db.collection(MATCHES_COLLECTION).deleteOne({ _id: new ObjectID(req.params.id) }, (err, result) => {
         if (err) {
             handleError(res, err.message, "Failed to delete match");
