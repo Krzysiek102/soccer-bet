@@ -14,15 +14,18 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build",
+    "preinstall": "npm install -g @angular/cli",
+    "postinstall": "ng build --prod",
     "server": "./node_modules/.bin/nodemon server.js",
     "client": "ng serve -o --proxy-config proxy.config.json"
   },
   "dependencies": {
+    "@angular/cli": "1.6.3",
+    "@angular/compiler-cli": "^5.0.0",
     "@angular/animations": "^5.0.0",
     "@angular/common": "^5.0.0",
     "@angular/compiler": "^5.0.0",
@@ -42,8 +45,6 @@
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
-    "@angular/cli": "1.6.3",
-    "@angular/compiler-cli": "^5.0.0",
     "@angular/language-service": "^5.0.0",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
