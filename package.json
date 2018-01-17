@@ -18,6 +18,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "preinstall": "npm install -g @angular/cli",
+    "postinstall": "ng build --prod",
     "server": "./node_modules/.bin/nodemon server.js",
     "client": "ng serve -o --proxy-config proxy.config.json"
   },
