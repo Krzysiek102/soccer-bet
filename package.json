@@ -19,7 +19,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "ng build --prod",
-    "server": "./node_modules/.bin/nodemon server.js",
+    "server": "./node_modules/.bin/nodemon --debug server.js",
     "client": "ng serve -o --proxy-config proxy.config.json",
     "local": "npm run server | npm run client"
   },
