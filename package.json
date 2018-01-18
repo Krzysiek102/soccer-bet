@@ -20,7 +20,8 @@
     "e2e": "ng e2e",
     "postinstall": "ng build --prod",
     "server": "./node_modules/.bin/nodemon server.js",
-    "client": "ng serve -o --proxy-config proxy.config.json"
+    "client": "ng serve -o --proxy-config proxy.config.json",
+    "local": "npm run server | npm run client"
   },
   "dependencies": {
     "@angular/cli": "1.6.3",

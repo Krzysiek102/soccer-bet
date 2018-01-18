@@ -25,7 +25,7 @@ function handleError(res, reason, message, code) {
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
-  });
+});
 
 app.get(`/api/${MATCHES_COLLECTION}`, (req, res) => {
     db.collection(MATCHES_COLLECTION).find({}).toArray((err, docs) => {
