@@ -10,10 +10,16 @@ import { Match } from '../match';
 })
 export class MatchListComponent implements OnInit {
   matches: Match[];
+  selectedMatch: Match;
+  
   constructor(private matchService: MatchService) { }
 
   ngOnInit() {
     this.matchService.list().subscribe(data => this.matches = data, err => console.log(err));
+  }
+
+  selectMatch(match: Match) {
+    this.selectedMatch = match;
   }
 
 }
