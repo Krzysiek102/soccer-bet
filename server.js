@@ -39,7 +39,6 @@ app.get(`/api/${MATCHES_COLLECTION}`, (req, res) => {
 
 app.post(`/api/${MATCHES_COLLECTION}`, (req, res) => {
     var newMatch = req.body;
-    newMatch.createDate = new Date();
     if (!req.body.name) {
         handleError(res, "Invalid user input", "Must provide a name.", 400);
     }

@@ -1,3 +1,21 @@
-<p>
-  match-details works!
-</p>
+<div *ngIf="match" class="row">
+  <div class="col-md-12">
+    <h2 *ngIf="match._id">Match details</h2>
+    <h2 *ngIf="!match._id">New match</h2>
+  </div>
+</div>
+<div *ngIf="match" class="row">
+  <form class="col-md-12">
+    <div class="form-group">
+      <label for="match-host">Host</label>
+      <input class="form-control" name="match-host" [(ngModel)]="match.host" placeholder="Host" />
+    </div>
+    <div class="form-group">
+      <label for="match-guest">Guest</label>
+      <input class="form-control" name="match-guest" [(ngModel)]="match.guest" placeholder="Guest" />
+    </div>
+    <button class="btn btn-primary" *ngIf="!match._id" (click)="createMatch(match)">Create</button>
+    <button class="btn btn-info" *ngIf="match._id" (click)="updateMatch(match)">Update</button>
+    <button class="btn btn-danger" *ngIf="match._id" (click)="deleteMatch(match._id)">Delete</button>
+  </form>
+</div>

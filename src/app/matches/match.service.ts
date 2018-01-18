@@ -13,8 +13,8 @@ export class MatchService {
     return this.httpClient.post<Match>(this._url, match);
   }
 
-  public delete(match: Match): Observable<Match> {
-    return this.httpClient.delete<Match>(`${this._url}/${match._id}`);
+  public delete(matchId: string): Observable<string> {
+    return this.httpClient.delete<string>(`${this._url}/${matchId}`);
   }
 
   public get(id: string): Observable<Match> {
