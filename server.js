@@ -39,9 +39,6 @@ app.get(`/api/${MATCHES_COLLECTION}`, (req, res) => {
 
 app.post(`/api/${MATCHES_COLLECTION}`, (req, res) => {
     var newMatch = req.body;
-    if (!req.body.name) {
-        handleError(res, "Invalid user input", "Must provide a name.", 400);
-    }
     db.collection(MATCHES_COLLECTION).insertOne(newMatch, (err, doc) => {
         if (err) {
             handleError(res, err.message, "Failed to create new match.");
