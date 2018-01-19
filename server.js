@@ -4,10 +4,11 @@ app.use(require('body-parser').json());
 app.use(express.static(__dirname + "/dist/"));
 
 let db;
-const ObjectId = require('mongodb').ObjectID;
+const mongodb = require('mongodb');
+const ObjectId = mongodb.ObjectID;
 const matchesColl = "matches";
 
-require('mongodb').MongoClient.connect(process.env.MONGODB_URI || require('./secrets.json').connectionString, (err, client) => {
+mongodb.MongoClient.connect(process.env.MONGODB_URI || require('./secrets.json').connectionString, (err, client) => {
     if (err) return console.log(err);
     console.log('successfully connected to db');
     db = client.db('heroku_320q6nfk');
