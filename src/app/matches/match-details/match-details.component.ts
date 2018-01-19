@@ -5,7 +5,8 @@ import { MatchService } from '../match.service';
 @Component({
   selector: 'soccer-bet-match-details',
   templateUrl: './match-details.component.html',
-  styleUrls: ['./match-details.component.css']
+  styleUrls: ['./match-details.component.css'],
+  providers: [MatchService]
 })
 export class MatchDetailsComponent {
   @Input() match: Match;
