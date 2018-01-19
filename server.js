@@ -1,28 +1,19 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const MongoClient = require('mongodb').MongoClient;
-const ObjectId = require('mongodb').ObjectID;
 const app = express();
-app.use(bodyParser.json());
-var distDir = __dirname + "/dist/";
-app.use(express.static(distDir));
+app.use(require('body-parser').json());
+app.use(express.static(__dirname + "/dist/"));
 
-const matchesColl = "matches";
 let db;
+const ObjectId = require('mongodb').ObjectID;
+const matchesColl = "matches";
 
-MongoClient.connect(process.env.MONGODB_URI || require('./secrets.json').connectionString, (err, client) => {
+require('mongodb').MongoClient.connect(process.env.MONGODB_URI || require('./secrets.json').connectionString, (err, client) => {
     if (err) return console.log(err);
     console.log('successfully connected to db');
     db = client.db('heroku_320q6nfk');
     const PORT = process.env.PORT || 5000;
     app.listen(PORT, () => console.log(`listen on ${PORT}`));
 });
-
-
-function handleError(res, reason, message, code) {
-    console.log("ERROR: " + reason);
-    res.status(code || 500).json({ "error": message });
-}
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
@@ -77,6 +68,11 @@ app.delete(`/api/${matchesColl}/:id`, (req, res) => {
         }
     });
 });
+
+function handleError(res, reason, message, code) {
+    console.log("ERROR: " + reason);
+    res.status(code || 500).json({ "error": message });
+}
 
 function cloneWithoutId(item){
     const cloned = Object.assign({}, item);
