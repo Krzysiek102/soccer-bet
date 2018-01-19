@@ -59,14 +59,11 @@ app.get(`/api/${matchesColl}/:id`, (req, res) => {
 });
 
 app.put(`/api/${matchesColl}/:id`, (req, res) => {
-    var updateDoc = req.body;
-    delete updateDoc._id;
-    db.collection(matchesColl).updateOne({ _id: ObjectId(req.params.id) }, { $set: updateDoc }, (err, doc) => {
+    db.collection(matchesColl).updateOne({ _id: ObjectId(req.params.id) }, { $set: cloneWithoutId(req.body) }, (err, doc) => {
         if (err) {
             handleError(res, err.message, "Failed to update match");
         } else {
-            updateDoc._id = req.params.id;
-            res.status(200).json(updateDoc);
+            res.status(200).json(req.body);
         }
     });
 });
@@ -80,3 +77,9 @@ app.delete(`/api/${matchesColl}/:id`, (req, res) => {
         }
     });
 });
+
+function cloneWithoutId(item){
+    const cloned = Object.assign({}, item);
+    delete cloned._id;
+    return cloned;
+}
