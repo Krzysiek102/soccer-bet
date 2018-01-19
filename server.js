@@ -1,12 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
+const ObjectId = require('mongodb').ObjectID;
 const app = express();
 app.use(bodyParser.json());
 var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 
-const MATCHES_COLLECTION = "matches";
+const matchesColl = "matches";
 let db;
 
 MongoClient.connect(process.env.MONGODB_URI || require('./secrets.json').connectionString, (err, client) => {
@@ -27,8 +28,8 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
-app.get(`/api/${MATCHES_COLLECTION}`, (req, res) => {
-    db.collection(MATCHES_COLLECTION).find({}).toArray((err, docs) => {
+app.get(`/api/${matchesColl}`, (req, res) => {
+    db.collection(matchesColl).find({}).toArray((err, docs) => {
         if (err) {
             handleError(res, err.message, "Failed to get matches.");
         } else {
@@ -37,9 +38,8 @@ app.get(`/api/${MATCHES_COLLECTION}`, (req, res) => {
     });
 });
 
-app.post(`/api/${MATCHES_COLLECTION}`, (req, res) => {
-    var newMatch = req.body;
-    db.collection(MATCHES_COLLECTION).insertOne(newMatch, (err, doc) => {
+app.post(`/api/${matchesColl}`, (req, res) => {
+    db.collection(matchesColl).insertOne(req.body, (err, doc) => {
         if (err) {
             handleError(res, err.message, "Failed to create new match.");
         } else {
@@ -48,8 +48,8 @@ app.post(`/api/${MATCHES_COLLECTION}`, (req, res) => {
     });
 });
 
-app.get(`/api/${MATCHES_COLLECTION}/:id`, (req, res) => {
-    db.collection(MATCHES_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, (err, doc) => {
+app.get(`/api/${matchesColl}/:id`, (req, res) => {
+    db.collection(matchesColl).findOne({ _id: ObjectId(req.params.id) }, (err, doc) => {
         if (err) {
             handleError(res, err.message, "Failed to get match");
         } else {
@@ -58,10 +58,10 @@ app.get(`/api/${MATCHES_COLLECTION}/:id`, (req, res) => {
     });
 });
 
-app.put(`/api/${MATCHES_COLLECTION}/:id`, (req, res) => {
+app.put(`/api/${matchesColl}/:id`, (req, res) => {
     var updateDoc = req.body;
     delete updateDoc._id;
-    db.collection(MATCHES_COLLECTION).updateOne({ _id: new ObjectID(req.params.id) }, updateDoc, (err, doc) => {
+    db.collection(matchesColl).updateOne({ _id: ObjectId(req.params.id) }, { $set: updateDoc }, (err, doc) => {
         if (err) {
             handleError(res, err.message, "Failed to update match");
         } else {
@@ -71,8 +71,8 @@ app.put(`/api/${MATCHES_COLLECTION}/:id`, (req, res) => {
     });
 });
 
-app.delete(`/api/${MATCHES_COLLECTION}/:id`, (req, res) => {
-    db.collection(MATCHES_COLLECTION).deleteOne({ _id: new ObjectID(req.params.id) }, (err, result) => {
+app.delete(`/api/${matchesColl}/:id`, (req, res) => {
+    db.collection(matchesColl).deleteOne({ _id: ObjectId(req.params.id) }, (err, result) => {
         if (err) {
             handleError(res, err.message, "Failed to delete match");
         } else {
