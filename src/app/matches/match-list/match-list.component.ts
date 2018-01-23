@@ -5,7 +5,6 @@ import { Match } from '../match';
 @Component({
   selector: 'soccer-bet-match-list',
   templateUrl: './match-list.component.html',
-  styleUrls: ['./match-list.component.css'],
   providers: [MatchService]
 })
 export class MatchListComponent implements OnInit {

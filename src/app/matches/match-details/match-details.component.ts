@@ -6,7 +6,6 @@ import { EventEmitter } from '@angular/core/';
 @Component({
   selector: 'soccer-bet-match-details',
   templateUrl: './match-details.component.html',
-  styleUrls: ['./match-details.component.css'],
   providers: [MatchService]
 })
 export class MatchDetailsComponent {

@@ -19,7 +19,6 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "soccer-bet",
       "styles": [
-        "styles.css",
         "../node_modules/bootstrap/dist/css/bootstrap.css"
       ],
       "scripts": [],
