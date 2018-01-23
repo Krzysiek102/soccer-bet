@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { Match } from '../match';
 import { MatchService } from '../match.service';
 import { EventEmitter } from '@angular/core/';

@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MatchListComponent } from './match-list.component';
 
 describe('MatchListComponent', () => {
