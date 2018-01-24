@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MatchDetailsComponent } from './match-details.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('MatchDetailsComponent', () => {
   let component: MatchDetailsComponent;
@@ -8,9 +9,15 @@ describe('MatchDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MatchDetailsComponent ]
+      imports: [
+        FormsModule,
+        HttpClientModule
+      ],
+      declarations: [
+        MatchDetailsComponent
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
