@@ -17,7 +17,7 @@ Travis CI pipeline: <https://travis-ci.org/Krzysiek102/soccer-bet>
 
 ### Debug client locally
 
-* In VS Code trigger `ng server` debug configuration
+* In VS Code trigger `ng serve` debug configuration
 * Put a breakpoint on ts file - it should be catched in VS Code
 
 ### Debug server locally
