@@ -17,11 +17,11 @@ Travis CI pipeline: <https://travis-ci.org/Krzysiek102/soccer-bet>
 
 ### Debug client locally
 
-* In Visual Studio Code trigger `ng server` debug configuration
+* In VS Code trigger `ng server` debug configuration
 * Put a breakpoint on ts file - it should be catched in VS Code
 
 ### Debug server locally
 
 * Install nodemon globally `npm install -g nodemon` (one off action)
-* In Visual Studio Code trigger `node attach` debug configuration
+* In VS Code trigger `node attach` debug configuration
 * Put a breakpoint in server script - it should be catched in VS Code
