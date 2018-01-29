@@ -13,13 +13,13 @@
   "homepage": "https://soccer-bet.herokuapp.com/",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "node ./server/server.js",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "ng build --prod",
-    "server": "./node_modules/.bin/nodemon --debug server.js",
+    "server": "./node_modules/.bin/nodemon --inspect ./server/server.js",
     "client": "ng serve -o --proxy-config proxy.config.json",
     "local": "npm run server | npm run client"
   },

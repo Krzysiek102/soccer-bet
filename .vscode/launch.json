@@ -4,12 +4,13 @@
     {
       "type": "node",
       "request": "attach",
-      "name": "node attach",
-      "port": 5858,
-      "restart": true
+      "name": "debug server",
+      "port": 9229,
+      "restart": true,
+      "protocol": "inspector"
     },
     {
-      "name": "ng serve",
+      "name": "debug client",
       "type": "chrome",
       "request": "launch",
       "url": "http://localhost:4200",
