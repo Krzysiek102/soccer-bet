@@ -1,15 +1,15 @@
 <div class="row">
-    <div class="col-md-5">
-        <h2>Matches</h2>
-        <ul class="list-group">
-            <li class="list-group-item" *ngFor="let match of matches" (click)="selectMatch(match)" [class.active]="match === selectedMatch">
-                {{match.host}} - {{match.guest}}
-            </li>
-        </ul>
-        <button class="btn btn-warning" (click)="createNewMatch()">New</button>
-    </div>
-    <div class="col-md-5 col-md-offset-2">
-        <soccer-bet-match-details [match]="selectedMatch" (created)="addMatch($event)" (updated)="updateMatch($event)" (deleted)="deleteMatch($event)">
-        </soccer-bet-match-details>
-    </div>
+  <div class="col-md-5">
+    <h2>Matches</h2>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let match of matches" (click)="selectMatch(match)" [class.active]="match === selectedMatch">
+        {{match.host}} - {{match.guest}}
+      </li>
+    </ul>
+    <button class="btn btn-warning" (click)="createNewMatch()">New</button>
+  </div>
+  <div class="col-md-5 col-md-offset-2">
+    <soccer-bet-match-details [match]="selectedMatch" (created)="addMatch($event)" (updated)="updateMatch($event)" (deleted)="deleteMatch($event)">
+    </soccer-bet-match-details>
+  </div>
 </div>
