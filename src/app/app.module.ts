@@ -7,16 +7,22 @@ import { AppComponent } from './app.component';
 import { MatchDetailsComponent } from './matches/match-details/match-details.component';
 import { MatchListComponent } from './matches/match-list/match-list.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { MatToolbarModule, MatButtonModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MatchDetailsComponent,
-    MatchListComponent
+    MatchListComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule
