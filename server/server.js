@@ -80,3 +80,18 @@ function cloneWithoutId(item) {
   delete cloned._id;
   return cloned;
 }
+
+
+const mongoose = require('mongoose');
+const User = require('./user');
+mongoose.connect(process.env.MONGODB_URI || require('./secrets.json').connectionString, (err) => {
+  if (err) return console.log(err);
+  console.log('connected via mongoose');
+});
+app.post('/api/register', (req, res) => {
+  const user = new User(req.body);
+  user.save((err, result) => {
+    if (err) return console.log(err);
+    res.sendStatus(200);
+  })
+});
