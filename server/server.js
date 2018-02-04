@@ -65,7 +65,7 @@ app.delete(`/api/${matchesColl}/:id`, (req, res) => {
     if (err) {
       handleError(res, err.message, "Failed to delete match");
     } else {
-      res.status(200).json(req.params.id);
+      res.status(204).json({});
     }
   });
 });
@@ -88,10 +88,11 @@ mongoose.connect(process.env.MONGODB_URI || require('./secrets.json').connection
   if (err) return console.log(err);
   console.log('connected via mongoose');
 });
-app.post('/api/register', (req, res) => {
+const usersUrl = "/api/users";
+app.post(usersUrl, (req, res) => {
   const user = new User(req.body);
   user.save((err, result) => {
-    if (err) return console.log(err);
-    res.sendStatus(200);
+    res.location(`${usersUrl}/${result._id}`);
+    res.status(201).json(result);
   })
 });

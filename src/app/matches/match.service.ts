@@ -5,28 +5,28 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class MatchService {
-  private readonly _url = '/api/matches';
+  private readonly url = '/api/matches';
 
   constructor(private httpClient: HttpClient) { }
 
   public create(match: Match): Observable<Match> {
-    return this.httpClient.post<Match>(this._url, match);
+    return this.httpClient.post<Match>(this.url, match);
   }
 
-  public delete(matchId: string): Observable<string> {
-    return this.httpClient.delete<string>(`${this._url}/${matchId}`);
+  public delete(matchId: string): Observable<{}> {
+    return this.httpClient.delete(`${this.url}/${matchId}`);
   }
 
   public get(id: string): Observable<Match> {
-    return this.httpClient.get<Match>(`${this._url}/${id}`);
+    return this.httpClient.get<Match>(`${this.url}/${id}`);
   }
 
   public list(): Observable<Match[]> {
-    return this.httpClient.get<Match[]>(this._url);
+    return this.httpClient.get<Match[]>(this.url);
   }
 
   public update(match: Match): Observable<Match> {
-    return this.httpClient.put<Match>(`${this._url}/${match._id}`, match);
+    return this.httpClient.put<Match>(`${this.url}/${match._id}`, match);
   }
 
 }

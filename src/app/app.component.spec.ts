@@ -5,6 +5,7 @@ import { MatchListComponent } from './matches/match-list/match-list.component';
 import { MatchDetailsComponent } from './matches/match-details/match-details.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatToolbarModule } from '@angular/material';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -12,7 +13,8 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule,
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
+        MatToolbarModule,
       ],
       declarations: [
         AppComponent,

@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -9,14 +8,14 @@ import { MatchListComponent } from './matches/match-list/match-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RegisterComponent } from './register/register.component';
+import { UserRegisterComponent } from './user/user-register/user-register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MatchDetailsComponent,
     MatchListComponent,
-    RegisterComponent
+    UserRegisterComponent
   ],
   imports: [
     BrowserModule,

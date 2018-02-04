@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RegisterComponent } from './register/register.component';
+import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { MatchListComponent } from './matches/match-list/match-list.component';
 
 const routes: Routes = [
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: UserRegisterComponent },
   { path: 'matches', component: MatchListComponent },
 ];
 

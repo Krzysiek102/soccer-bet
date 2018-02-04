@@ -25,7 +25,7 @@ export class MatchDetailsComponent {
   }
 
   deleteMatch(matchId: string) {
-    this.matchService.delete(matchId).subscribe(deletedMatchId => this.deleted.emit(deletedMatchId));
+    this.matchService.delete(matchId).subscribe(() => this.deleted.emit(matchId));
   }
 
 }
