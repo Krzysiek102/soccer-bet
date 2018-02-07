@@ -9,13 +9,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
+import { UserLoginComponent } from './user/user-login/user-login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MatchDetailsComponent,
     MatchListComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,

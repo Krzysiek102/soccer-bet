@@ -96,3 +96,15 @@ app.post(usersUrl, (req, res) => {
     res.status(201).json(result);
   })
 });
+
+const jwt = require('jwt-simple');
+const Session = require('./session');
+app.post("/api/sessions", async (req, res) => {
+  const user = new User(req.body);
+  const existingUser = await User.findOne({ email: user.email });
+  if (!existingUser || user.password !== existingUser.password) return res.status(401).json({});
+  const payload = {};
+  const token = jwt.encode(payload, '123');//todo: get secret from configuration file
+  const session = new Session(token);
+  res.status(200).send(session);
+});
