@@ -11,4 +11,8 @@ export class SessionService {
   public create(user: User): Observable<Session> {
     return this.httpClient.post<Session>('/api/sessions', user);
   }
+
+  public storeLocally(session: Session) {
+    localStorage.setItem('token', session.token);
+  }
 }

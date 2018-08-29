@@ -97,6 +97,16 @@ app.post(usersUrl, (req, res) => {
   })
 });
 
+app.get(usersUrl, async (req, res) => {
+  const users = await User.find({}, '-password -__v');
+  res.send(users);
+});
+
+app.get(`${usersUrl}/:id`, async (req, res) => {
+  const user = await User.findById(req.params.id, '-password -__v');
+  res.send(user);
+});
+
 const jwt = require('jwt-simple');
 const Session = require('./session');
 app.post("/api/sessions", async (req, res) => {
