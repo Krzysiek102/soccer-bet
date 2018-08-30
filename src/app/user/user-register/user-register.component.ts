@@ -15,6 +15,6 @@ export class UserRegisterComponent {
 
   create() {
     this.userService.create(this.user)
-      .subscribe(registeredUser => console.log(registeredUser));
+      .subscribe(registeredUser => console.log('registered successfully'));
   }
 }

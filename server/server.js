@@ -5,6 +5,7 @@ app.use(express.static(__dirname + "./../dist/"));
 
 let db;
 const mongodb = require('mongodb');
+const bcrypt = require('bcrypt-nodejs');
 const ObjectId = mongodb.ObjectID;
 const matchesColl = "matches";
 
@@ -110,11 +111,14 @@ app.get(`${usersUrl}/:id`, async (req, res) => {
 const jwt = require('jwt-simple');
 const Session = require('./session');
 app.post("/api/sessions", async (req, res) => {
-  const user = new User(req.body);
-  const existingUser = await User.findOne({ email: user.email });
-  if (!existingUser || user.password !== existingUser.password) return res.status(401).json({});
-  const payload = {};
-  const token = jwt.encode(payload, '123');//todo: get secret from configuration file
-  const session = new Session(token);
-  res.status(200).send(session);
+  const loginData = new User(req.body);
+  const existingUser = await User.findOne({ email: loginData.email });
+  if (!existingUser) return res.status(401).json({});
+  bcrypt.compare(loginData.password, existingUser.password, (_err, isMatch) => {
+    if (!isMatch) return res.status(401).json({});
+    const payload = {};
+    const token = jwt.encode(payload, '123');//todo: get secret from configuration file
+    const session = new Session(token);
+    res.status(200).send(session);
+  });
 });

@@ -15,6 +15,9 @@ export class UserLoginComponent {
 
   login() {
     this.sessionService.create(this.user)
-    .subscribe(session => this.sessionService.storeLocally(session));
+    .subscribe(session => {
+      this.sessionService.storeLocally(session);
+      console.log('logged successfully');
+    });
   }
 }
